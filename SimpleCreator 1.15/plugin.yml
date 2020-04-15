@@ -1,0 +1,8 @@
+name: SimpleCreator
+version: 1.0
+api-version: 1.15
+author: _Matrax_
+main: com.fr.matrax.simplecreator.Main
+commands:
+  simplecreator:
+    description: Commands for simplecreator plugin !
