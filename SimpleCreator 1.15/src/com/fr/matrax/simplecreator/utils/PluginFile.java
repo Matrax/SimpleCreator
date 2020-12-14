@@ -1,4 +1,4 @@
-package com.fr.matrax.simplecreator.files;
+package com.fr.matrax.simplecreator.utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,8 +14,13 @@ import org.bukkit.entity.EntityType;
 
 import com.fr.matrax.simplecreator.managers.CustomMobManager;
 import com.fr.matrax.simplecreator.mobs.CustomMob;
-import com.fr.matrax.simplecreator.utils.LocationConverter;
 
+/**
+ * This class represent a configuration file of the plugin
+ * This class is easier to use than the bukkit version
+ * @version 1.0
+ * @author _Matrax_
+ */
 public abstract class PluginFile
 {
 	private FileConfiguration configFile;
@@ -42,20 +47,23 @@ public abstract class PluginFile
 	}
 	
 	/**
-	 * This method load or create the file
+	 * This method create the file if it doesn't exist
 	 */
 	public void initialize()
 	{
-		if(this.getFile().exists() == false) 
-		{
-			this.OnCreate();
-		} else {
-			this.OnLoad();
-		}
+		if(this.getFile().exists() == false) this.OnCreate();
 	}
 	
 	/**
-	 * this method save the file
+	 * This method load the file
+	 */
+	public void load()
+	{
+		this.OnLoad();
+	}
+	
+	/**
+	 * This method save the file
 	 */
 	public void save()
 	{
@@ -207,7 +215,7 @@ public abstract class PluginFile
 	 */
 	public CustomMob getCustomMobOption(String name)
 	{
-		return CustomMobManager.getCustomMobManager().getByName(this.getString(name));
+		return CustomMobManager.getCustomMobManager().getCustomMobList().getByName(this.getString(name));
 	}
 	
 	/**
